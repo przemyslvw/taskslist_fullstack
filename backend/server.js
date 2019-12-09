@@ -29,7 +29,7 @@ taskRoutes.route("/").get(function(req, res) {
 });
 
 taskRoutes.route("/:id").get(function(req, res) {
-  let id = req.params.id;
+  const id = req.params.id;
   Task.findById(id, function(err, task) {
     res.json(task);
   });
@@ -50,7 +50,19 @@ taskRoutes.route("/add").post(function(req, res) {
 taskRoutes.route("/update/:id").post(function(req, res) {
   Task.findById(req.params.id, function(err, task) {
     if (!task) res.status(404).send("data is not found");
-    else task = req.body;
+    else task.name = req.body.name;
+    task.lastname = req.body.lastname;
+    task.email = req.body.email;
+    task.category = req.body.category;
+    task.title = req.body.title;
+    task.description = req.body.description;
+    task.data_end = req.body.data_end;
+    task.priority = req.body.priority;
+    task.started = req.body.started;
+    task.start = req.body.start;
+    task.stop = req.body.stop;
+    task.visible = req.body.visible;
+    task.completed = req.body.completed;
 
     task
       .save()
