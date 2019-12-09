@@ -36,16 +36,14 @@ export const saveTask = task => {
 };
 
 export const startTask = task => {
-  const d = new Date();
-  task.start = d;
+  task.start = new Date();
   task.started = true;
   axios
     .post(`${baseURL}/update/${task._id}`, task)
     .then(res => console.log(res.data));
 };
 export const stopTask = task => {
-  const d = new Date();
-  task.stop = d;
+  task.stop = new Date();
   task.visible = false;
   axios
     .post(`${baseURL}/update/${task._id}`, task)
