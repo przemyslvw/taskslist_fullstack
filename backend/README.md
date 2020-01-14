@@ -1,7 +1,9 @@
 # BACKEND tasks app
 
-1. mongod
+1. npm install -g nodemon
 
-2. npm i
+2. start mongod
 
-3. npm run start
+3. npm i
+
+4. npm run start
